@@ -24,15 +24,62 @@ describe('guessWord action dispatcher', () => {
             expect(newState).toEqual(expectedState)
         })
         test('updates state correctly for sucessful guess', () => {
-            
+            store.dispatch(guessWord(secretWord))
+            const newState = store.getState()
+            const expectedState = {
+                secretWord,
+                success: true,
+                guessedWords: [{
+                    guessedWord: secretWord,
+                    letterMatchCount: 5
+                }]
+            }
+            expect(newState).toEqual(expectedState)
         })
     })
     describe('some guessed words', () => {
+        const firstGuess = 'cat'
+        const initialState = { 
+            secretWord, 
+            guessedWords: [{
+                guessedWord: firstGuess,
+                letterMatchCount: 2
+            }]}
+        let store
+        beforeEach(() => {
+            store = storeFactory(initialState)
+        })
         test('updates state correctly for unsucessful guess', () => {
-
+            store.dispatch(guessWord(unsucessfulGuess))
+            const newState = store.getState()
+            const expectedState = {
+                secretWord,
+                success: false,
+                guessedWords: [{
+                    guessedWord: firstGuess,
+                    letterMatchCount: 2
+                }, {
+                    guessedWord: unsucessfulGuess,
+                    letterMatchCount: 3
+                }]
+            }
+            expect(newState).toEqual(expectedState)
         })
         test('updates state correctly for sucessful guess', () => {
-            
+            store.dispatch(guessWord(secretWord))
+            const newState = store.getState()
+            const expectedState = {
+                secretWord,
+                success: true,
+                guessedWords: [{
+                    guessedWord: firstGuess,
+                    letterMatchCount: 2
+                }, {
+                    guessedWord: secretWord,
+                    letterMatchCount: 5
+                }]
+            }
+            expect(newState).toEqual(expectedState)
         })
     })
 })
