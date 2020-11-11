@@ -24,3 +24,11 @@ export const guessWord = (guessedWord) => {
         }
     }
 }
+
+export const getSecretWord = () => {
+    return function(dispatch) {
+        dispatch({
+            type:''
+        })
+    }
+}
