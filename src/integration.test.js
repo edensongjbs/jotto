@@ -10,7 +10,7 @@ describe('guessWord action dispatcher', () => {
         beforeEach(() => {
             store = storeFactory(initialState)
         })
-        test('updates state correctly for unsucessful guess', () => {
+        test('updates state correctly for unsuccessful guess', () => {
             store.dispatch(guessWord(unsucessfulGuess))
             const newState = store.getState()
             console.log(newState)
@@ -24,7 +24,7 @@ describe('guessWord action dispatcher', () => {
             }
             expect(newState).toEqual(expectedState)
         })
-        test('updates state correctly for sucessful guess', () => {
+        test('updates state correctly for successful guess', () => {
             store.dispatch(guessWord(secretWord))
             const newState = store.getState()
             const expectedState = {
@@ -50,7 +50,7 @@ describe('guessWord action dispatcher', () => {
         beforeEach(() => {
             store = storeFactory(initialState)
         })
-        test('updates state correctly for unsucessful guess', () => {
+        test('updates state correctly for unsuccessful guess', () => {
             store.dispatch(guessWord(unsucessfulGuess))
             const newState = store.getState()
             const expectedState = {
@@ -66,7 +66,7 @@ describe('guessWord action dispatcher', () => {
             }
             expect(newState).toEqual(expectedState)
         })
-        test('updates state correctly for sucessful guess', () => {
+        test('updates state correctly for successful guess', () => {
             store.dispatch(guessWord(secretWord))
             const newState = store.getState()
             const expectedState = {
